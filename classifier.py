@@ -18,7 +18,7 @@ df = dpp.remove_third_class_only_present_twice(df)
 labels = df["Class"]
 del df["Class"]
 
-df_train, df_test, train_labels, test_labels = train_test_split(df, labels, test_size=0.5, random_state=0)
+df_train, df_test, train_labels, test_labels = train_test_split(df, labels, test_size=0.5, stratify=labels)
 
 classifier = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=3, random_state=0).fit(df_train, train_labels)
 pred_res = classifier.predict(df_test)
